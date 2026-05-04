@@ -1,0 +1,489 @@
+/* === IDENTIDADE VISUAL MODERNA & PREMIUM === */
+:root {
+    --primary: #003366; 
+    --primary-light: #004C99; 
+    --secondary: #D4AF37; 
+    --secondary-hover: #B5952F; 
+    --whatsapp: #25D366; 
+    --whatsapp-hover: #1DA851;
+    --accent-light: #FDF8E7; 
+    --bg-light: #F4F7FA; 
+    --surface: #FFFFFF;
+    --text-dark: #1A202C; 
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 20px 40px rgba(0, 51, 102, 0.08);
+    --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* === RESET & BASE === */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+a:focus, button:focus, input:focus, textarea:focus { outline: none; }
+html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+html { scroll-padding-top: 100px; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--surface);
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-title); font-weight: 600; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* === NOVAS ANIMAÇÕES DE EFEITO (SHINE & FLOAT) === */
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* === ANIMAÇÕES DE SCROLL === */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUpAnim {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === BARRA DE PROGRESSO === */
+.scroll-progress {
+    position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+    background: var(--secondary); z-index: 1000; transition: width 0.1s ease-out;
+}
+
+/* === HEADER === */
+header {
+    position: fixed; width: 100%; top: 0; left: 0; z-index: 999;
+    background: transparent; border-bottom: 1px solid transparent; 
+    transition: all 0.5s ease; padding: 0.5rem 0;
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    border-bottom: 1px solid var(--border); 
+    padding: 0;
+}
+
+.nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+
+.logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+.site-logo-icon { height: 45px; width: auto; object-fit: contain; transition: var(--transition); }
+.site-logo-text { height: 28px; width: auto; object-fit: contain; transition: var(--transition); }
+
+.nav-links { display: flex; gap: 3rem; align-items: center; }
+.nav-links a { 
+    font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; color: var(--primary); 
+    text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); position: relative; 
+    text-shadow: 0 1px 3px rgba(255,255,255,0.9); 
+}
+header.scrolled .nav-links a { text-shadow: none; }
+
+.nav-links a:not(.btn-nav)::after { 
+    content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%);
+    background-color: var(--secondary); transition: var(--transition); border-radius: 5px;
+}
+.nav-links a:not(.btn-nav):hover::after { width: 100%; }
+.nav-links a:hover { color: var(--secondary); }
+
+/* Botão Nav Dourado Arredondado Delicado */
+.btn-nav {
+    border: 1px solid var(--secondary); color: var(--secondary) !important;
+    padding: 0.6rem 1.6rem; font-weight: 700;
+    position: relative; z-index: 1; transition: var(--transition);
+    border-radius: 50px; text-shadow: none !important;
+}
+.btn-nav::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--secondary); z-index: -1; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scaleX(0); transform-origin: right; border-radius: 50px;
+}
+.btn-nav:hover::before { transform: scaleX(1); transform-origin: left; }
+.btn-nav:hover { color: #fff !important; }
+header.scrolled .btn-nav { border-color: var(--primary); color: var(--primary) !important; }
+header.scrolled .btn-nav::before { background: var(--primary); }
+
+.hamburger { display: none; background: none; border: none; font-size: 1.8rem; color: var(--primary); cursor: pointer; transition: var(--transition); }
+
+/* === MENU MOBILE === */
+.mobile-menu {
+    position: fixed; top: 0; right: -100%; width: 320px; height: 100vh; background-color: var(--surface);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 1001; padding: 3rem 2.5rem; display: flex; flex-direction: column;
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-menu.active { right: 0; }
+.mobile-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;}
+.mobile-logo-area { display: flex; align-items: center; gap: 8px;}
+.mobile-logo-icon { height: 35px; width: auto; object-fit: contain; }
+.mobile-logo-text { height: 22px; width: auto; object-fit: contain; }
+.close-menu { font-size: 2rem; color: var(--primary); cursor: pointer; transition: var(--transition); }
+.close-menu:hover { transform: rotate(90deg); color: var(--secondary); }
+.mobile-links { display: flex; flex-direction: column; gap: 1.5rem; }
+.mobile-links a { 
+    font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--primary); transition: var(--transition); 
+}
+.mobile-links a:hover { color: var(--secondary); padding-left: 10px; }
+
+.mobile-links .btn-nav-mobile { 
+    border: 1px solid var(--secondary); color: var(--secondary) !important; 
+    text-align: center; padding: 1rem; border-radius: 50px; margin-top: 1rem; 
+}
+.mobile-links .btn-nav-mobile:hover { background: var(--secondary); color: #fff !important; }
+
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(0, 51, 102, 0.85); backdrop-filter: blur(5px);
+    z-index: 1000; display: none; opacity: 0; transition: opacity 0.5s ease;
+}
+.overlay.active { display: block; opacity: 1; }
+
+/* === HERO SECTION CLARA === */
+.hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 2rem 60px 2rem; background: var(--surface); overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: url('../img/background.png') center/cover; 
+    opacity: 1; z-index: 1;
+    animation: kenburns 35s infinite alternate ease-in-out;
+}
+
+@keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+.hero::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.95) 100%); z-index: 2;
+}
+
+.hero-content {
+    position: relative; z-index: 3; max-width: 900px; color: var(--primary);
+    animation: fadeUpAnim 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero h1 { 
+    font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.15; margin-bottom: 1.5rem; 
+    font-weight: 700; letter-spacing: -0.5px; text-shadow: 0 4px 20px rgba(255,255,255,0.9);
+}
+.hero h1 span { color: var(--secondary); font-style: italic;}
+
+.hero p { 
+    font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--text-dark); margin-bottom: 3rem; 
+    max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 500;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.8);
+}
+
+/* Botão Primário Arredondado e Dourado com EFEITO SHINE */
+.btn-primary {
+    font-family: var(--font-body); background: var(--secondary); color: #fff; 
+    padding: 1rem 2.5rem; font-size: 0.95rem; font-weight: 700; border-radius: 50px; 
+    display: inline-flex; align-items: center; gap: 12px; transition: var(--transition); 
+    text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--secondary); 
+    cursor: pointer; position: relative; overflow: hidden; z-index: 1;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--primary); z-index: -1; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scaleY(0); transform-origin: bottom; border-radius: 50px;
+}
+
+/* Efeito de Brilho contínuo */
+.btn-primary::after, .btn-accent::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg); z-index: 2;
+    animation: shine 5s infinite;
+}
+
+.btn-primary i { transition: transform 0.3s ease; position: relative; z-index: 3;}
+.btn-primary:hover { color: #fff; border-color: var(--primary); box-shadow: 0 15px 30px rgba(0,51,102,0.2); }
+.btn-primary:hover::before { transform: scaleY(1); }
+.btn-primary:hover i { transform: translateX(5px); }
+
+/* === SEÇÕES GENÉRICAS === */
+section { padding: 8rem 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-header { text-align: center; margin-bottom: 5rem; }
+.section-tag { 
+    font-family: var(--font-body); color: var(--secondary); font-weight: 700; 
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; 
+    margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.section-tag::before, .section-tag::after { content: ''; width: 40px; height: 2px; background: var(--secondary); border-radius: 5px;}
+
+.section-title { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--primary); font-weight: 700; line-height: 1.2; }
+.section-subtitle { font-family: var(--font-body); color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 1.5rem auto 0; line-height: 1.7; font-weight: 400;}
+
+/* === SOBRE NÓS === */
+.about { background-color: var(--surface); }
+.about .container { text-align: center; max-width: 850px; }
+.about-text { font-family: var(--font-title); font-size: clamp(1.4rem, 2.5vw, 1.8rem); color: var(--text-dark); line-height: 1.6; font-weight: 400; font-style: italic;}
+.about-text strong { font-weight: 700; color: var(--secondary); font-style: normal;}
+
+/* === SERVIÇOS === */
+.services { background-color: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);} 
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+
+.service-card { 
+    background: var(--surface); padding: 4rem 3rem; border-radius: 24px; 
+    box-shadow: var(--shadow-sm); transition: var(--transition); 
+    position: relative; border: 1px solid transparent; 
+}
+.service-card:hover { 
+    transform: translateY(-10px); box-shadow: var(--shadow-lg); 
+    border-color: rgba(212, 175, 55, 0.3); 
+}
+
+.icon-box { 
+    background: var(--accent-light); color: var(--secondary); font-size: 2.2rem; 
+    width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; margin-bottom: 2rem; transition: var(--transition); 
+    animation: float 4s ease-in-out infinite; /* EFEITO FLOAT NOS ÍCONES */
+}
+.service-card:hover .icon-box { 
+    animation-play-state: paused; /* Pausa a flutuação no hover para fazer a animação abaixo */
+    background: var(--secondary); color: #fff; transform: scale(1.1) rotate(5deg); 
+}
+
+.service-card h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem; font-weight: 700;}
+.service-card p { font-family: var(--font-body); color: var(--text-muted); font-size: 1rem; line-height: 1.8; font-weight: 400;}
+
+/* === BANNER CERTIFICADO DIGITAL COM IMAGEM DE FUNDO === */
+.certisign-wrapper { padding: 5rem 2rem; background-color: var(--surface); }
+.certisign-banner { 
+    position: relative; 
+    border-radius: 24px; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    text-align: center;
+    box-shadow: var(--shadow-lg); 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* A imagem de fundo puxando do img/certificado.jpeg */
+.certisign-banner::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: url('../img/certificado.jpeg') center/cover no-repeat; 
+    z-index: 1; 
+    transition: transform 0.8s ease;
+}
+
+/* O overlay para escurecer a imagem e o texto aparecer com luxo */
+.certisign-banner::after {
+    content: ''; 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.92), rgba(0, 25, 51, 0.85)); 
+    z-index: 2; 
+}
+
+.certisign-banner:hover::before {
+    transform: scale(1.05); /* Leve zoom na imagem ao passar o mouse */
+}
+
+.certisign-content { 
+    position: relative; 
+    z-index: 3; 
+    max-width: 750px;
+    color: #fff;
+}
+
+.certisign-content i { font-size: 3.5rem; color: var(--secondary); margin-bottom: 1.5rem; transition: transform 0.5s ease; display: inline-block;}
+.certisign-banner:hover .certisign-content i { transform: translateY(-5px);}
+.certisign-content h2 { font-size: clamp(2.2rem, 3.5vw, 2.8rem); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; color: #fff;}
+.certisign-content p { font-family: var(--font-body); font-size: 1.1rem; color: #E2E8F0; margin-bottom: 2.5rem; line-height: 1.7; font-weight: 400;}
+
+/* Botão com efeito Shine herdado do pseudo-elemento */
+/* Diminuindo o botão do Certificado Digital */
+.btn-accent {
+    font-family: var(--font-body); 
+    background: var(--secondary); 
+    color: #fff; 
+    padding: 0.7rem 1.8rem !important; 
+    font-size: 0.85rem !important; 
+    font-weight: 700; 
+    border-radius: 50px; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    border: 1px solid var(--secondary); 
+    cursor: pointer; 
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    transition: var(--transition);
+}
+
+.btn-accent:hover { 
+    background: transparent; 
+    color: var(--secondary); 
+    border-color: var(--secondary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* === CONTATO E GOOGLE MAPS === */
+.contact { background-color: var(--surface); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: stretch; }
+.contact-info-wrapper { padding: 2rem 0; }
+
+.info-item { display: flex; gap: 20px; margin-bottom: 3rem; align-items: flex-start; }
+.info-item:last-child { margin-bottom: 0; }
+.info-icon { 
+    background: var(--accent-light); color: var(--secondary); font-size: 1.5rem; 
+    width: 55px; height: 55px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; flex-shrink: 0; transition: var(--transition); 
+}
+.info-item:hover .info-icon { background: var(--primary); color: #fff; transform: translateY(-5px); }
+.info-item div strong { font-family: var(--font-title); display: block; font-size: 1.3rem; color: var(--primary); margin-bottom: 0.3rem; font-weight: 700; }
+.info-item div p, .info-item div a { font-family: var(--font-body); color: var(--text-muted); line-height: 1.6; font-weight: 400; transition: var(--transition); }
+.info-item div a:hover { color: var(--secondary); }
+
+.map-container { width: 100%; min-height: 100%; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: var(--transition); box-shadow: var(--shadow-sm);}
+.map-container iframe { width: 100%; height: 100%; min-height: 450px; border: 0; display: block; filter: grayscale(50%) contrast(1.1); transition: var(--transition); }
+.map-container:hover { box-shadow: var(--shadow-lg); }
+.map-container:hover iframe { filter: grayscale(0%); }
+
+/* === FOOTER === */
+footer { background-color: var(--primary); color: #E2E8F0; padding: 6rem 2rem 2rem 2rem; border-top: 4px solid var(--secondary); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 4rem; margin-bottom: 5rem; }
+
+.footer-logo-area { display: flex; align-items: center; gap: 12px; margin-bottom: 2rem;}
+.footer-logo-area img { filter: brightness(0) invert(1); opacity: 0.9; }
+
+.footer-brand p { font-size: 0.95rem; line-height: 1.8; max-width: 400px; margin-bottom: 1.5rem; font-weight: 300;}
+
+.footer-title { color: #fff; font-family: var(--font-title); font-size: 1.3rem; margin-bottom: 2rem; font-weight: 600;}
+
+.footer-links ul li { margin-bottom: 1.2rem; }
+.footer-links ul li a { transition: var(--transition); display: inline-block; font-weight: 400; color: #E2E8F0;}
+.footer-links ul li a:hover { color: #fff; transform: translateX(5px); }
+
+.footer-contact ul li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 1.5rem; transition: var(--transition); font-weight: 400;}
+.footer-contact ul li:hover { transform: translateX(5px); }
+.footer-contact ul li i { color: #fff; margin-top: 5px; font-size: 1.1rem; opacity: 0.7;}
+.footer-contact ul li a { color: #E2E8F0; transition: var(--transition); }
+.footer-contact ul li a:hover { color: #fff; }
+
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; font-weight: 300;}
+.footer-bottom strong { color: #fff; font-weight: 600;}
+
+/* === WHATSAPP FLUTUANTE VERDE === */
+.whatsapp-float { 
+    position: fixed; bottom: 35px; right: 35px; background-color: var(--whatsapp) !important; color: white !important; 
+    width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+    font-size: 35px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 998; transition: var(--transition);
+    border: none;
+}
+.whatsapp-float::before { content: ''; position: absolute; width: 100%; height: 100%; background: var(--whatsapp); border-radius: 50%; z-index: -1; animation: pulse 2s infinite; }
+.whatsapp-float:hover { background-color: var(--whatsapp-hover) !important; transform: scale(1.1) rotate(-5deg); }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+
+/* === MODAL DE TRIAGEM === */
+.wa-modal {
+    display: flex; visibility: hidden; opacity: 0; position: fixed; z-index: 1005; left: 0; top: 0;
+    width: 100%; height: 100%; background-color: rgba(0, 51, 102, 0.8); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; transition: all 0.4s ease;
+}
+.wa-modal.show { visibility: visible; opacity: 1; }
+.wa-modal-content {
+    background: var(--surface); padding: 3.5rem; border-radius: 24px; width: 90%; max-width: 500px;
+    position: relative; box-shadow: var(--shadow-lg); transform: translateY(-30px); transition: transform 0.4s ease;
+}
+.wa-modal.show .wa-modal-content { transform: translateY(0); }
+.wa-close {
+    position: absolute; top: 15px; right: 25px; font-size: 2.2rem; color: var(--text-muted);
+    cursor: pointer; transition: color 0.3s ease; font-weight: 400;
+}
+.wa-close:hover { color: var(--secondary); }
+.wa-modal-content h3 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.8rem; }
+.wa-modal-content p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; font-weight: 400;}
+.wa-modal-content input, .wa-modal-content select, .wa-modal-content textarea {
+    width: 100%; padding: 15px; margin-bottom: 1.5rem; border: 1px solid var(--border);
+    border-radius: 12px; font-family: var(--font-body); font-size: 0.95rem; background: var(--bg-light);
+    outline: none; transition: border-color 0.3s ease; color: var(--text-dark);
+}
+.wa-modal-content input:focus, .wa-modal-content select:focus, .wa-modal-content textarea:focus {
+    border-color: var(--secondary); background: #fff;
+}
+
+/* Botão do modal verde estilo WhatsApp */
+#wa-submit { 
+    width: 100%; justify-content: center; margin-top: 0.5rem;
+    background: var(--whatsapp); border-color: var(--whatsapp);
+    color: #fff; border-radius: 50px; padding: 1rem;
+}
+#wa-submit::before { background: var(--whatsapp-hover); border-radius: 50px; }
+#wa-submit:hover { border-color: var(--whatsapp-hover); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); color:#fff;}
+
+/* === SISTEMA DE TOAST === */
+#toast-container {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999;
+    display: flex; flex-direction: column; gap: 10px; pointer-events: none;
+}
+.toast {
+    background-color: var(--primary); color: #fff; padding: 15px 25px; border-radius: 12px;
+    font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; border-left: 4px solid var(--secondary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px;
+    animation: toastSlideDown 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; opacity: 0; transform: translateY(-20px);
+}
+.toast i { color: var(--secondary); font-size: 1.2rem; }
+.toast.hide { animation: toastFadeOut 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+@keyframes toastSlideDown { to { opacity: 1; transform: translateY(0); } }
+@keyframes toastFadeOut { to { opacity: 0; transform: translateY(-15px); } }
+
+/* === RESPONSIVO === */
+@media (max-width: 1024px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .map-container iframe { min-height: 350px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    
+    /* Imagem de Fundo para Celular */
+    .hero-bg { background: url('../img/background02.png') center/cover; opacity: 1; }
+    
+    .hero { padding-top: 130px; padding-bottom: 80px; } 
+    .hero h1 { font-size: 2.2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .footer-logo-area { justify-content: center; }
+    .footer-contact ul li { justify-content: center; }
+    .whatsapp-float { width: 55px; height: 55px; font-size: 28px; bottom: 20px; right: 20px; }
+    section { padding: 5rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 3rem 2rem; }
+    .wa-modal-content { padding: 2.5rem 1.5rem; }
+    .certisign-banner { padding: 4rem 1.5rem; }
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinceri Contabilidade e Consultoria | Inovação e Gestão</title>
+    
+    <!-- === FAVICON === -->
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    
+    <meta name="description" content="Contabilidade Completa, Abertura e Fechamento de Empresas, Folha de Pagamento e Certificado Digital em Manaus.">
+    
+    <!-- === LINKS DE COMPARTILHAMENTO (WhatsApp, Facebook, LinkedIn, etc) === -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vinceri.netlify.app/">
+    <meta property="og:title" content="Vinceri Contabilidade e Consultoria">
+    <meta property="og:description" content="A parceria estratégica que o seu negócio precisa para vencer no mercado.">
+    <meta property="og:image" content="https://vinceri.netlify.app/img/logo3.png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://vinceri.netlify.app/">
+    <meta property="twitter:title" content="Vinceri Contabilidade e Consultoria">
+    <meta property="twitter:description" content="A parceria estratégica que o seu negócio precisa para vencer no mercado.">
+    <meta property="twitter:image" content="https://vinceri.netlify.app/img/logo3.png">
+    
+    <!-- Fontes Modernas: Playfair Display (Títulos) e Plus Jakarta Sans (Corpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="overlay" id="overlay"></div>
+    
+    <header id="header">
+        <div class="nav-container">
+            <!-- DUAS LOGOS AQUI -->
+            <a href="#" onclick="handleLogoClick(event);" class="logo-area" title="Página Inicial">
+                <img src="img/logo.png" alt="Ícone Vinceri" class="site-logo-icon">
+                <img src="img/logo2.png" alt="Texto Vinceri Contabilidade" class="site-logo-text">
+            </a>
+            <nav class="nav-links">
+                <a href="#sobre">A Essência</a>
+                <a href="#servicos">Expertise</a>
+                <a href="#contato">Contato</a>
+                <a href="https://wa.me/5592982771117" target="_blank" class="btn-nav wa-trigger">Consultoria Exclusiva</a>
+            </nav>
+            <button class="hamburger" id="hamburger-btn">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <!-- DUAS LOGOS MOBILE -->
+            <a href="#" onclick="handleLogoClick(event);" class="mobile-logo-area" title="Página Inicial">
+                <img src="img/logo.png" alt="Ícone Vinceri" class="mobile-logo-icon">
+                <img src="img/logo2.png" alt="Texto Vinceri Contabilidade" class="mobile-logo-text">
+            </a>
+            <i class="fa-solid fa-xmark close-menu" id="close-btn"></i>
+        </div>
+        <nav class="mobile-links">
+            <a href="#sobre" class="mobile-link">A Essência</a>
+            <a href="#servicos" class="mobile-link">Expertise</a>
+            <a href="#contato" class="mobile-link">Contato</a>
+            <a href="https://wa.me/5592982771117" target="_blank" class="mobile-link btn-nav-mobile wa-trigger">Consultoria Exclusiva</a>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>A Parceria que sua Empresa precisa para <span>Vencer</span></h1>
+            <p>Assessoria contábil inteligente. Removemos a complexidade burocrática para que sua visão de negócios alcance o topo do mercado.</p>
+            <a href="https://wa.me/5592982771117" class="btn-primary wa-trigger" target="_blank">
+                Iniciar Atendimento <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="container reveal">
+            <div class="section-header">
+                <span class="section-tag">Nossa Essência</span>
+                <h2 class="section-title">Inteligência para Acelerar Negócios</h2>
+            </div>
+            <p class="about-text">"A <strong>Vinceri Contabilidade</strong> eleva o padrão da gestão financeira e burocrática. Transformamos dados em estratégias claras, garantindo solidez, conformidade e o ambiente perfeito para o crescimento exponencial do seu negócio."</p>
+        </div>
+    </section>
+
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Expertise Corporativa</span>
+                <h2 class="section-title">Soluções Especializadas</h2>
+                <p class="section-subtitle">Gestão contábil e administrativa estruturada para garantir segurança jurídica e eficiência tributária máxima.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3>Contabilidade Completa</h3>
+                    <p>Fechamento contábil com precisão cirúrgica e planejamento tributário avançado para proteger sua lucratividade.</p>
+                </div>
+                
+                <div class="service-card reveal" style="transition-delay: 100ms;">
+                    <div class="icon-box"><i class="fa-regular fa-building"></i></div>
+                    <h3>Legalização Societária</h3>
+                    <p>Atuação rápida e segura na Abertura, Alteração e Fechamento de empresas, conduzida por especialistas em processos governamentais.</p>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay: 200ms;">
+                    <div class="icon-box"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Gestão de Folha (R.H.)</h3>
+                    <p>Administração impecável de rotinas trabalhistas e eSocial, mitigando riscos e garantindo tranquilidade na relação com seus talentos.</p>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay: 300ms;">
+                    <div class="icon-box"><i class="fa-solid fa-key"></i></div>
+                    <h3>Certificação Digital</h3>
+                    <p>Emissão e validação de e-CPF e e-CNPJ. A tecnologia necessária para assinar contratos e documentos com total validade jurídica e agilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === NOVA SEÇÃO DE CERTIFICADO COM IMAGEM DE FUNDO === -->
+    <section class="certisign-wrapper">
+        <div class="certisign-banner reveal">
+            <div class="certisign-content">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h2>Emissão de Certificado Digital</h2>
+                <p>Autenticidade e segurança intransigentes para as transações eletrônicas da sua empresa. Faça a emissão ou renovação do seu certificado de forma rápida com o nosso suporte especializado.</p>
+                <a href="https://wa.me/5592982771117" target="_blank" class="btn-accent wa-trigger">Agendar Emissão Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Atendimento Exclusivo</span>
+                <h2 class="section-title">Fale com Nossos Especialistas</h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-wrapper reveal">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <strong>Escritório Sede</strong>
+                            <p>Rua Dallas, 23, Quadra A<br>Bairro Flores - Manaus/AM</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div>
+                            <strong>Atendimento Direto</strong>
+                            <p><a href="https://wa.me/5592982771117" target="_blank" class="wa-trigger">(92) 98277-1117</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <strong>E-mail Corporativo</strong>
+                            <p><a href="mailto:comercial@vinceri.com.br">comercial@vinceri.com.br</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                        <div>
+                            <strong>Disponibilidade</strong>
+                            <p>Segunda a Sexta-feira<br>08h00 às 18h00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container reveal" style="transition-delay: 200ms;">
+                    <iframe src="https://maps.google.com/maps?q=Rua%20Dallas,%2023,%20Quadra%20A,%20Flores,%20Manaus&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <!-- DUAS LOGOS RODAPÉ -->
+                <div class="footer-logo-area">
+                    <img src="img/logo.png" alt="Ícone Vinceri" class="site-logo-icon">
+                    <img src="img/logo2.png" alt="Texto Vinceri Contabilidade" class="site-logo-text">
+                </div>
+                <p>Estrutura contábil e consultiva projetada para transformar complexidade em estratégia corporativa de alto impacto.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="footer-title">Links Úteis</h4>
+                <ul>
+                    <li><a href="#sobre">A Essência</a></li>
+                    <li><a href="#servicos">Nossa Expertise</a></li>
+                    <li><a href="https://wa.me/5592982771117" class="wa-trigger">Certificado Digital</a></li>
+                    <li><a href="#contato">Fale Conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4 class="footer-title">Contatos</h4>
+                <ul>
+                    <li>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <a href="https://wa.me/5592982771117" target="_blank" class="wa-trigger">(92) 98277-1117</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:comercial@vinceri.com.br">comercial@vinceri.com.br</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Flores, Manaus - AM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p><strong>VINCERI CONTABILIDADE LTDA</strong> © 2026. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante Original (Verde) -->
+    <a href="https://wa.me/5592982771117" class="whatsapp-float wa-trigger" target="_blank" aria-label="Contato pelo WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- === MODAL DE TRIAGEM === -->
+    <div id="wa-modal" class="wa-modal">
+        <div class="wa-modal-content">
+            <span class="wa-close" id="wa-close">×</span>
+            <h3>Como podemos ajudar?</h3>
+            <p>Informe seus dados para um atendimento exclusivo e ágil.</p>
+            
+            <input type="text" id="wa-nome" placeholder="Qual é o seu nome?" required>
+            
+            <select id="wa-assunto" required>
+                <option value="" disabled selected>Sobre qual serviço deseja falar?</option>
+                <option value="Abertura de Empresa">Abertura de Empresa</option>
+                <option value="Fechamento de Empresa">Fechamento de Empresa</option>
+                <option value="Contabilidade Completa">Contabilidade Completa</option>
+                <option value="Folha de Pagamento">Folha de Pagamento (RH)</option>
+                <option value="Certificado Digital">Certificado Digital</option>
+                <option value="Consultoria">Consultoria Especializada</option>
+            </select>
+            
+            <textarea id="wa-mensagem" placeholder="Deixe uma mensagem (Opcional)" rows="3"></textarea>
+            
+            <button id="wa-submit" class="btn-primary">
+                Iniciar Atendimento <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem; margin-left: 5px;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- === CONTÊINER PARA TOASTS === -->
+    <div id="toast-container"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
